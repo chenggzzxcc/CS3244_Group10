@@ -1,8 +1,8 @@
 import torch
 torch.backends.cudnn.benchmark = True
 from torch.utils.data import DataLoader
-from model.transformers.bert.dataset import FRDataset
-from model.transformers.bert.model import FakeReal, FRDataParallel
+from experimental.transformers.bert.dataset import FRDataset
+from experimental.transformers.bert.model import FakeReal, FRDataParallel
 from utils.generic_utils import get_gpu_memory_usage
 from tqdm import tqdm
 import sys
