@@ -16,6 +16,7 @@ fake_data['fake'] = 1
 df = pd.concat([reader.extract_columns(buzzfeed_fake), reader.extract_columns(buzzfeed_real),
                 reader.extract_columns(politifact_real), reader.extract_columns(fake_data)])
 
-df = reader.tokenize_columns(df, k=10000)
-df = reader.extract_columns(df, ('tokenized text', 'tokenized title', 'authors', 'fake'))
+df = reader.preprocess(df, k=10000)
+df = reader.extract_columns(df, ('tokenized text', 'tokenized title', 'authors',
+                                 'citation_count', 'avg sentence len', 'punctuation count', 'fake'))
 reader.write(df, 'buzzfeed_politifact_news.csv')

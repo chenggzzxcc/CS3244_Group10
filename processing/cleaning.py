@@ -10,7 +10,7 @@ def initial_clean(text):
     We also lower case the text
     """
     text = re.sub("((\S+)?(http(s)?)(\S+))|((\S+)?(www)(\S+))|((\S+)?(\@)(\S+)?)", "", text)
-    text = re.sub("[^a-zA-Z0-9 ]", "", text)
+    text = re.sub("[^a-zA-Z0-9!?%()<>{}:;\"\',.\[\] ]", "", text)
     text = text.lower()
     text = nltk.word_tokenize(text)
     return text
@@ -45,7 +45,7 @@ def apply_all(text):
     """
     This function applies all the functions above into one
     """
-    return stem_words(remove_stop_words(initial_clean(text)))
+    return stem_words(initial_clean(text))
 
 
 def keep_top_k_words(text, top_k_words):
