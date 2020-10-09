@@ -5,7 +5,6 @@ reader.rename_columns(df, title='article_title', text='article_content', fake='l
 df = reader.extract_columns(df, columns=('title', 'text', 'fake'))
 df['fake'] = 1 - df['fake']
 
-df = reader.preprocess(df, k=10000)
-df = reader.extract_columns(df, ('tokenized text', 'tokenized title', 'citation_count',
-                                 'avg sentence len', 'punctuation count', 'fake'))
-reader.write(df, 'fakes_news.csv')
+df = reader.tokenize_columns(df, k=10000)
+df = reader.extract_columns(df, ('tokenized text', 'tokenized title', 'fake'))
+reader.write(df, 'news.csv')

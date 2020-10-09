@@ -10,7 +10,6 @@ fake_df = reader.extract_columns(fake_df, columns=('title', 'text', 'fake'))
 
 df = pd.concat([real_df, fake_df])
 
-df = reader.preprocess(df, k=10000)
-df = reader.extract_columns(df, ('tokenized text', 'tokenized title', 'citation_count',
-                                 'avg sentence len', 'punctuation count', 'fake'))
+df = reader.tokenize_columns(df, k=10000)
+df = reader.extract_columns(df, ('tokenized text', 'tokenized title', 'fake'))
 reader.write(df, 'fake_and_real_news.csv')
